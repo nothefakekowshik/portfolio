@@ -1,0 +1,46 @@
+{% extends 'port/main.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div class="row justify-content-center my-3">
+        <div class="col-5">
+          <img src="{% static 'images\my_photo.jpg' %}" alt="my photo" class="img-fluid"/>
+        </div>
+      </div>
+    <br>
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-9 text-center">
+        <h1 id="hometext" class="font-weight-bold" style ="font-size: 18px;">Kowshik has completed his bachelors degree with computers as major and has good knowledge on core topics such as operating system, DBMS, Data structures and algorithms. Apart from his university curriculum, he is well known for his problem solving abilities ,work ethics and leadership principles.He has enough hands on experience on various data structures and advanced algorithmic paradigms like dynamic programming, backtracking. Feel free to connect with him <a href="https://www.linkedin.com/in/kowshik-n-192381186/" target="_blank">here.</a>😊
+          <br> <a href="{% url 'blog:allBlogs' %}">Click here to visit the blogs that he has uploaded.</a>      
+        </h1>
+      </div>
+    </div>
+    
+    <br><br>
+    <h2 class="mt-5">Kowshik's work samples</h2> 
+    <hr>
+    <div class="row">
+      {% for i in dataa%}
+      <div class="col-lg-4 col-md-6">
+        <img src="{{ i.image.url }}" class="img-fluid mb-2" width="500" height="450">
+        <br>
+        <br>
+        <h3>{{ i.title }}</h3>
+        <p>{{ i.description }}</p>
+        {% if i.url %}
+          <p><a href="{{i.url}}" target="_blank">Check it here.</a></p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+</html>
